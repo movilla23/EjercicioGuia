@@ -5,10 +5,10 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <stdio.h>
-
-
-
-int main(int argc, char *argv[])
+	
+	
+	
+	int main(int argc, char *argv[])
 {
 	
 	int sock_conn, sock_listen, ret;
@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
 			if (codigo !=0)
 			{
 				p = strtok( NULL, "/");
-
+				
 				strcpy (nombre, p);
 				// Ya tenemos el nombre
 				printf ("Codigo: %d, Nombre: %s\n", codigo, nombre);
@@ -86,23 +86,23 @@ int main(int argc, char *argv[])
 				strcpy (respuesta,"SI");
 				else
 					strcpy (respuesta,"NO");
-			else //quiere saber si es alto
-			{
-				p = strtok( NULL, "/");
-				float altura =  atof (p);
-				if (altura > 1.70)
-					sprintf (respuesta, "%s: eres alto",nombre);
-				else
-					sprintf (respuesta, "%s: eresbajo",nombre);
-			}
+				else //quiere saber si es alto
+				{
+					p = strtok( NULL, "/");
+					float altura =  atof (p);
+					if (altura > 1.70)
+						sprintf (respuesta, "%s: eres alto",nombre);
+					else
+						sprintf (respuesta, "%s: eresbajo",nombre);
+				}
 				
-			if (codigo !=0)
-			{
-				
-				printf ("Respuesta: %s\n", respuesta);
-				// Enviamos respuesta
-				write (sock_conn,respuesta, strlen(respuesta));
-			}
+				if (codigo !=0)
+				{
+					
+					printf ("Respuesta: %s\n", respuesta);
+					// Enviamos respuesta
+					write (sock_conn,respuesta, strlen(respuesta));
+				}
 		}
 		// Se acabo el servicio para este cliente
 		close(sock_conn); 
